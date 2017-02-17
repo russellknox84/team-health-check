@@ -1,4 +1,4 @@
-const { expect } = require("chai");
+const expect = require("chai").expect;
 
 describe("test test", () => {
     it("should return true", () => {
