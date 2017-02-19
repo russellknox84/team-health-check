@@ -8,17 +8,34 @@
     "express-handlebars": "^3.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "eslint": "^3.15.0",
     "eslint-watch": "^3.0.0",
     "mocha": "^3.2.0",
-    "nodemon": "^1.11.0"
+    "node-sass": "^4.5.0",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.1",
+    "watchify": "^3.9.0"
   },
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon .",
+    "dev": "npm-run-all --parallel watch:*",
+    "watch:app": "nodemon app.js --exec babel-node --presets es2015",
+    "watch:js": "nodemon --watch ./src/assets/js -x 'npm run browserify'",
+    "watch:sass": "nodemon -e scss -x 'npm run sass'",
+    "create:public": "mkdir -p ./dist/public/js ./dist/public/css ./dist/public/img",
+    "browserify": "browserify ./assets/js/app.js > dist/public/js/bundle.js -t [ babelify --presets [ es2015 ] ]",
+    "sass": "node-sass ./assets/sass/app.scss ./dist/public/css/app.css",
     "test": "mocha",
-    "lint": "esw . assets test"
+    "lint": "esw . assets test",
+    "build": "babel app.js -d --presets es2015 --out-dir dist && babel ./app -d --presets es2015 --out-dir dist/app && npm run create:public && npm run browserify && npm run sass"
   },
   "repository": {
     "type": "git",
