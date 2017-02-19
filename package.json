@@ -28,14 +28,14 @@
     "start": "nodemon .",
     "dev": "npm-run-all --parallel watch:*",
     "watch:app": "nodemon app.js --exec babel-node --presets es2015",
-    "watch:js": "nodemon --watch ./src/assets/js -x 'npm run browserify'",
-    "watch:sass": "nodemon -e scss -x 'npm run sass'",
+    "watch:js": "nodemon ./assets/js --exec babel-node --presets es2015",
+    "watch:sass": "nodemon -e node-sass ./assets/sass/app.scss",
     "create:public": "mkdir -p ./dist/public/js ./dist/public/css ./dist/public/img",
-    "browserify": "browserify ./assets/js/app.js > dist/public/js/bundle.js -t [ babelify --presets [ es2015 ] ]",
+    "browserify": "browserify ./assets/js/index.js > dist/public/js/bundle.js -t [ babelify --presets [ es2015 ] ]",
     "sass": "node-sass ./assets/sass/app.scss ./dist/public/css/app.css",
+    "build": "babel app.js -d --presets es2015 --out-dir dist && babel ./app -d --presets es2015 --out-dir dist/app && npm run create:public && npm run browserify && npm run sass",
     "test": "mocha",
-    "lint": "esw . assets test",
-    "build": "babel app.js -d --presets es2015 --out-dir dist && babel ./app -d --presets es2015 --out-dir dist/app && npm run create:public && npm run browserify && npm run sass"
+    "lint": "esw . assets test"
   },
   "repository": {
     "type": "git",
