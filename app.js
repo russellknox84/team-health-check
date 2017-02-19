@@ -5,6 +5,7 @@ import routes from './app/routes'
 
 const app = express();
 
+app.use(express.static(__dirname + "/dist/public"))
 app.engine("handlebars", hbs({
     extname: '.handlebars',
     layoutsDir: __dirname + "/views",
