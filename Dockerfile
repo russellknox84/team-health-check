@@ -1,0 +1,1 @@
+FROM quay.io/ukhomeofficedigital/nodejs-base:v6.9.1
