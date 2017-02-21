@@ -5,11 +5,11 @@ import routes from './app/routes'
 
 const app = express();
 
-app.use(express.static(__dirname + "/dist/public"))
+app.use(express.static("./dist/public"))
 app.engine("handlebars", hbs({
     extname: '.handlebars',
-    layoutsDir: __dirname + "/views",
-    defaultLayout: __dirname + "/views/layouts/main"
+    layoutsDir: "./views",
+    defaultLayout: "./layouts/main"
 }))
 app.set("view engine", "handlebars")
 
