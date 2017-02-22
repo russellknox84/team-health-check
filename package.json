@@ -25,7 +25,7 @@
     "watchify": "^3.9.0"
   },
   "scripts": {
-    "start": "nodemon .",
+    "start": "node .",
     "dev": "npm-run-all --parallel watch:* create:public ",
     "watch:app": "nodemon app.js --exec babel-node --presets es2015",
     "watch:js": "nodemon --watch ./assets/js -x 'npm run browserify'",
