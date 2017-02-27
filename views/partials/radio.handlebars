@@ -1,5 +1,6 @@
-<fieldset id={{name}} data-type="radio">
-    {{#each (times)}}
-        <input type="radio" name={{name}} value={{value}}>
+<fieldset class={{id}} data-type="radio">
+    {{#each values}}
+         <input type="radio" name={{../id}} value={{id}} id={{../id}}>
+         <label for="{{id}}">{{id}}</label>
     {{/each}}
 </fieldset>

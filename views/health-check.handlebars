@@ -1,10 +1,11 @@
 <form class="radioNameForm">
+  <input type="submit">
   {{#each health-check.questions}} 
     <div>Question: {{question}} </div>
     {{>(renderPartial type) this}}
   {{/each}}
 
-  <input type="submit">
+  
 
 </form>
 
