@@ -1,6 +1,9 @@
-// Functions for validation middleware, consider using vladiator to chain checks and improve reliability
+// Functions for validation middleware
 
-// TODO: 
+// DONE: Create unit test for module.
+// TODO: Consider using vladiator to chain validation and improve reliability of checks, module can be used Client/Server side.
+// TODO: Create meaningful errors.
+// TODO: Refactor code to use a callback pattern inline with existing NodeJS patterns.
 
 var validation = {
     radioButton: function(data) {
@@ -21,7 +24,6 @@ validation.check = function (name, data) {
     } else {
         console.log("validation rule for " + name + " does not exist");
     }
-
 };
 
 module.exports = validation;
