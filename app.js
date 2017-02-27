@@ -1,16 +1,21 @@
 import express from 'express';
-import hbs from "express-handlebars";
+import exphbs from "express-handlebars";
 
 import routes from './app/routes'
 
 const app = express();
 
-app.use(express.static("./dist/public"))
-app.engine("handlebars", hbs({
+var hbs = exphbs.create({
     extname: '.handlebars',
     layoutsDir: "./views",
-    defaultLayout: "./layouts/main"
-}))
+    defaultLayout: "./layouts/main",
+    helpers: {
+        renderPartial: (partial) => partial
+    }
+});
+
+app.use(express.static("./dist/public"))
+app.engine("handlebars", hbs.engine)
 app.set("view engine", "handlebars")
 
 routes(app);
