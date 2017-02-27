@@ -1,6 +1,6 @@
 // Functions for validation middleware
 
-const validator = require('the-vladiator');
+import validator from 'the-vladiator';
 
 // DONE: Create unit test for module.
 // DONE: Consider using vladiator to chain validation and improve reliability of checks, module can be used Client/Server side.
@@ -8,12 +8,12 @@ const validator = require('the-vladiator');
 // TODO: Refactor code to use a callback pattern inline with existing NodeJS patterns.
 
 var validation = {
-    radioButton: function(data) {
+    radio: function(data) {
         // Radio Button validation code goes here.
         var result = validator(data).isRequired().notEmpty().isNumber().lowerThan(6).higherThan(0).didPass();
         return result;
     },
-    textArea: function(data) {
+    textarea: function(data) {
         // Text Area validation code goes here
         var result1 = validator(data).isRequired().notEmpty().isString().shorterThan(65).didPass();
         var result2 = data.split(" ").length > 3
@@ -38,4 +38,4 @@ validation.check = function (name, data) {
     }
 };
 
-module.exports = validation;
+export default validation;
