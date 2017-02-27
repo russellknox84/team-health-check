@@ -10,7 +10,10 @@ var hbs = exphbs.create({
     layoutsDir: "./views",
     defaultLayout: "./layouts/main",
     helpers: {
-        renderPartial: (partial) => partial
+        renderPartial: (partial) => partial,
+        times: (x) => {
+            return [1,2,3,4]
+        }
     }
 });
 

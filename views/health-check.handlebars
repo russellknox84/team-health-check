@@ -1,7 +1,7 @@
 <form class="radioNameForm">
-
-  {{#each typed}} 
-    {{>(partial name) this}}
+  {{#each health-check.questions}} 
+    <div>Question: {{question}} </div>
+    {{>(renderPartial type) this}}
   {{/each}}
 
   <input type="submit">
