@@ -1,9 +1,13 @@
 import express from 'express';
 import exphbs from "express-handlebars";
+import bodyParser from 'body-parser'
 
 import routes from './app/routes'
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 var hbs = exphbs.create({
     extname: '.handlebars',

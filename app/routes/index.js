@@ -8,4 +8,5 @@ export default (app) => {
             res.render("health-check", questionData)
         })
     })
+    app.post("/user-data", (req, res) => console.log(req.body))
 }
