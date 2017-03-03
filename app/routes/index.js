@@ -1,6 +1,9 @@
 import fs from 'fs'
 
 export default (app) => {
+
+    const render = (page, res) => res.render(page)
+
     app.get("/", (req, res) => {       
         fs.readFile(__dirname + "/../question-data.json", "utf8", (err, data) => {          
             const questionData = JSON.parse(data)
@@ -8,5 +11,11 @@ export default (app) => {
             res.render("health-check", questionData)
         })
     })
-    app.post("/user-data", (req, res) => console.log(req.body))
+
+    app.get("/sucess", (req, res) => res.render("sucess"))
+
+    app.post("/user-data", (req, res) => {
+        console.log(req.body.userResponse)
+        res.send("done")
+    })
 }

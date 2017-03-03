@@ -1,3 +1,3 @@
-const name = "Home Office Digital"
+import healthFormSubmission from "./health-form"
 
-export default name;
+healthFormSubmission()
