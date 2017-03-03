@@ -21,6 +21,7 @@
     "chai-http": "^3.0.0",
     "eslint": "^3.15.0",
     "eslint-watch": "^3.0.0",
+    "jsdom": "^9.11.0",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",
@@ -34,10 +35,10 @@
     "watch:js": "nodemon --watch ./assets/js -x 'npm run browserify'",
     "watch:sass": "nodemon -e scss -x 'npm run sass'",
     "create:public": "mkdir -p ./dist/public/js ./dist/public/css ./dist/public/img",
-    "browserify": "browserify ./assets/js/**.js > dist/public/js/bundle.js -t [ babelify --presets [ es2015 ] ]",
+    "browserify": "browserify ./assets/js/index.js > dist/public/js/bundle.js -t [ babelify --presets [ es2015 ] ]",
     "sass": "node-sass ./assets/sass/app.scss ./dist/public/css/app.css",
     "build": "babel app.js ./app -d --out-dir dist && babel ./app -d --out-dir dist/app && npm run create:public && npm run browserify && npm run sass",
-    "test": "mocha --compilers js:babel-core/register",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js",
     "lint": "esw . assets test"
   },
   "repository": {
