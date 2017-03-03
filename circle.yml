@@ -11,8 +11,13 @@ test:
     - docker run -d -p 3000:8080 russellknox/team-health-app
 
 deployment:
+<<<<<<< HEAD
   hub:
     branch: master
+=======
+  heroku:
+    branch: dev
+>>>>>>> a6ec93f14e9e44ca3c8f152becbb8d715e92172e
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push russellknox/team-health-app     
