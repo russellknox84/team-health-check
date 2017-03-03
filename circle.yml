@@ -19,4 +19,4 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: team-health-app
+      appname: team-health-check
