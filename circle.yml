@@ -11,8 +11,12 @@ test:
     - docker run -d -p 3000:8080 russellknox/team-health-app
 
 deployment:
-  heroku:
+  hub:
     branch: master
     commands:
-      - docker tag russellknox/team-health-app registry.heroku.com/team-health-check/web
-      - docker push registry.heroku.com/team-health-check/web
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push russellknox/team-health-app     
+  staging:
+    branch: dev
+    heroku:
+      appname: team-health-check
