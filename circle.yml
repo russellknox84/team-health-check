@@ -16,3 +16,7 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push russellknox/team-health-app
+  staging:
+    branch: master
+    heroku:
+      appname: team-health-app
