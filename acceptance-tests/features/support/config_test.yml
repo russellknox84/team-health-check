@@ -1,0 +1,2 @@
+health_check: 'http://localhost:8080'
+mocks: 'http://localhost:8080'
