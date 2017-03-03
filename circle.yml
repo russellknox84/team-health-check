@@ -12,7 +12,7 @@ test:
 
 deployment:
   heroku:
-    branch: master
+    branch: dev
     commands:
       - docker tag russellknox/team-health-app registry.heroku.com/team-health-check/web
       - docker push registry.heroku.com/team-health-check/web
