@@ -1,6 +1,6 @@
-<fieldset class={{id}} data-type="radio">
+<fieldset class={{id}} data-type="radio" id="radio_buttons">
     {{#each values}}
-         <input type="radio" name={{../id}} value={{id}} id={{../id}}>
+         <input type="radio" name={{../id}} value={{id}} id="{{../id}}-{{id}}">
          <label for="{{id}}">{{id}}</label>
     {{/each}}
 </fieldset>

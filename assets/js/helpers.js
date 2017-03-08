@@ -15,9 +15,20 @@ const appendErrorMessageElement = (input, parent, errorMessage) => {
     return parent.querySelector(`.${input.id}`).appendChild(div)
 }
 
+const validate = (input, userResponse) => {
+    if (input.type === 'radio') {
+        if (userResponse.value === "") return true
+        return false
+    }
+    if (input.type === 'textarea') {
+        if (userResponse.value.split(" ").length !== 3) return true
+        return false
+    }
+}
+
 const validateUserInput = (input, userResponse) => {
-    if (userResponse === "") return Object.assign(input)
-    return Object.assign(input, { userResponse })
+    if (validate(input, userResponse)) return Object.assign(input)
+    return Object.assign(input, { userResponse: userResponse.value })
 }
 
 const getElementByClassName = (e) => {
