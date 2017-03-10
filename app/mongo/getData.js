@@ -6,8 +6,8 @@ const getTeamHealthCheck = (req, res) => {
             
             return Object.assign({}, {date: input.date}, {userResponse: input.userResponse})
         })
-        console.log(userDate)
-        res.render("user-response", {data: userDate})
+        
+    res.render("user-response", {data: userDate})
     })
 }
 

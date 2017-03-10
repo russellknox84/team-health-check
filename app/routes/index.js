@@ -13,7 +13,7 @@ export default (app) => {
             res.render("health-check", questionData)
         })
     })
-    app.get("/gammon", getData)
+    app.get("/health-check-response", getData)
 
     app.get("/sucess", (req, res) => res.render("sucess"))
 

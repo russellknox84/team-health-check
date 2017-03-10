@@ -1,7 +1,7 @@
 import db from "mongoose"
 
 db.connect('mongodb://localhost/teamHealthCheck', (err, cb) => {
-    console.log('did I work??!')
+    console.log('connected')
 })
 
 export default db

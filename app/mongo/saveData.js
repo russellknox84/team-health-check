@@ -8,8 +8,8 @@ const saveTeamHealthCheckData = (req, res) => {
 
     })
 
-    data.save((err, cb) => console.log("now is hould have saved!"))
-    res.send('w')
+    data.save()
+    res.send('success')
 }
 
 export default saveTeamHealthCheckData
