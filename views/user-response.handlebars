@@ -1,12 +1,21 @@
-<h1>Hello Guy</h1>
+<h1>User Responses</h1>
 
-{{#each data}} 
-    <div>Date: {{date}}</div>
-    <div>User Response: 
-        {{#each userResponse}} 
-            <ul>
-                <li>{{question}}</li>
-                <li>{{userResponse}}</li>
-            </ul>
-        {{/each}} </div>
+{{#each data}}
+    <table  style="margin-bottom: 30px;">
+        <caption><strong>Submitted - {{date}}</strong></caption>
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Response</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each userResponse}} 
+            <tr>
+                <td>{{question}}</td>
+                <td>{{userResponse}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
 {{/each}}
