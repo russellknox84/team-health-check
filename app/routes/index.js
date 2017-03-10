@@ -1,4 +1,6 @@
 import fs from 'fs'
+import saveData from '../mongo/saveData'
+import getData from '../mongo/getData'
 
 export default (app) => {
 
@@ -11,11 +13,9 @@ export default (app) => {
             res.render("health-check", questionData)
         })
     })
+    app.get("/health-check-response", getData)
 
     app.get("/sucess", (req, res) => res.render("sucess"))
 
-    app.post("/user-data", (req, res) => {
-        console.log(req.body.userResponse)
-        res.send("done")
-    })
+    app.post("/user-data", saveData)
 }

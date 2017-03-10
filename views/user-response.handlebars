@@ -1,0 +1,12 @@
+<h1>Hello Guy</h1>
+
+{{#each data}} 
+    <div>Date: {{date}}</div>
+    <div>User Response: 
+        {{#each userResponse}} 
+            <ul>
+                <li>{{question}}</li>
+                <li>{{userResponse}}</li>
+            </ul>
+        {{/each}} </div>
+{{/each}}
