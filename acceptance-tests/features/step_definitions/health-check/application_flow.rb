@@ -11,7 +11,7 @@ When(/input value has been checked for all radio buttons/i) do
 end
 
 And(/3 words have been entered for text input/i) do
-  fill_in 'Q10', :with => "one two three"
+  fill_in 'Q10', :with => config['response']
 end
 
 When(/I submit the form/i) do

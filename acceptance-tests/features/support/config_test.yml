@@ -1,3 +1,5 @@
 health_check: 'http://localhost:8000'
 responses: 'http://localhost:8000/health-check-response'
 mocks: 'http://localhost:8080'
+
+response: 'cat dog cow'
