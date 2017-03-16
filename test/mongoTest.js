@@ -1,37 +1,43 @@
 import db from 'mongoose'
 import model from '../app/mongo/model'
+import { expect } from "chai";
 
-let dbConnection
+db.Promise = global.Promise
 
-beforeEach(function (done) {
-
-    dbConnection = db.connect('mongodb://localhost/teamHealthCheck', (err, cb) => {
-
-       
-        
-        return done()
-    })
-    
-})
 afterEach(function (done) {
-
-    dbConnection.disconnect()
-    return done()
+     db.connection.collections.healthdatas.drop(() => {
+     done()
+ })
 
 })
-describe("user data is persisted to database", (done) =>{
-        it("should validate user date has been sent and stored successfully", () => {
-            const date = new Date()
-            const user = new model({
+describe("user data is persisted to database", () =>{
+        let date
+        let health_data
+        date = new Date()
+
+        beforeEach((done) => {
+            health_data = new model({
                 date: date,
                 userResponse: [{name: "Russell"}]
-            })
-            
-            user.save((err, cb) => {
-                model.find({userResponse['name']: "Russell"}, (err, data) => {
-                    console.log(data)
-                    //expect(data).to.deep.equal()
+            })  
+            done()     
+        })
+
+        it("should sucessfull save data into db", (done) => {
+             health_data.save()
+                .then(data => {
+                    expect(data)
+                    done()
                 })
-            })
+            
+        })
+
+        it("should validate user date has been sent and stored successfully", (done) => {
+
+            model.find({date})
+                .then(data => {
+                    expect(date).to.equal(date)
+                    done()
+                })
         })
 })
