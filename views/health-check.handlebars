@@ -1,12 +1,12 @@
 <div class="grid-row">
     <div class="column-full">
         <h2 class="heading-medium">Submit your response</h2>
-
+        <p> On a scale of one to five, one being strongly disagree and five being strongly agree, answer the following questions </p>
         <form class="health-check">
             <ul class="questions">
               {{#each health-check.questions}} 
               <li class="health-check--question form-group">
-                <legend>Question: {{question}} </legend>
+                <legend>{{question}} </legend>
                 <div class="health-check--answers inline">
                 {{>(renderPartial type) this}}
                 </div>
