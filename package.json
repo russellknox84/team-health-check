@@ -8,6 +8,7 @@
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
     "express-handlebars": "^3.0.0",
+    "govuk_frontend_toolkit": "^5.1.1",
     "mongoose": "^4.8.6",
     "the-vladiator": "^1.2.10"
   },
