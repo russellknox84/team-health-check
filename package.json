@@ -8,6 +8,7 @@
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
     "express-handlebars": "^3.0.0",
+    "govuk-elements-sass": "^3.0.0",
     "govuk_frontend_toolkit": "^5.1.1",
     "mongoose": "^4.8.6",
     "the-vladiator": "^1.2.10"
@@ -39,7 +40,7 @@
     "watch:sass": "nodemon -e scss -x 'npm run sass'",
     "create:public": "mkdir -p ./dist/public/js ./dist/public/css ./dist/public/img",
     "browserify": "browserify ./assets/js/index.js > dist/public/js/bundle.js -t [ babelify ]",
-    "sass": "node-sass ./assets/sass/app.scss ./dist/public/css/app.css",
+    "sass": "node-sass --include-path=./node_modules/govuk_frontend_toolkit/stylesheets/ --include-path=./node_modules/govuk-elements-sass/public/sass/ ./assets/sass/app.scss ./dist/public/css/app.css",
     "build": "babel app.js ./app -d --out-dir dist && babel ./app -d --out-dir dist/app && npm run create:public && npm run browserify && npm run sass && cp ./app/question-data.json ./dist/app/question-data.json",
     "test": "DB_HOST=localhost/test_teamHealthCheck mocha --compilers js:babel-core/register --require ./test/test_helper.js",
     "lint": "esw . assets test"
