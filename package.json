@@ -40,7 +40,7 @@
     "browserify": "browserify ./assets/js/index.js > dist/public/js/bundle.js -t [ babelify ]",
     "sass": "node-sass ./assets/sass/app.scss ./dist/public/css/app.css",
     "build": "babel app.js ./app -d --out-dir dist && babel ./app -d --out-dir dist/app && npm run create:public && npm run browserify && npm run sass && cp ./app/question-data.json ./dist/app/question-data.json",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js",
+    "test": "DB_HOST=localhost/test_teamHealthCheck mocha --compilers js:babel-core/register --require ./test/test_helper.js",
     "lint": "esw . assets test"
   },
   "repository": {
