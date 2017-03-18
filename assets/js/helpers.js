@@ -12,7 +12,7 @@ const appendErrorMessageElement = (input, parent, errorMessage) => {
     div.textContent = 'A input value must be given..'
     div.style.color = 'red'
     div.className = `errormessage_${input.id}`
-    return parent.querySelector(`.${input.id}`).appendChild(div)
+    return parent.querySelector(`.${input.id}`).parentElement.parentElement.appendChild(div)
 }
 
 const validate = (input, userResponse) => {
