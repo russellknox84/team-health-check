@@ -4,14 +4,26 @@
         <hr>
     </div>
 </div>
-<div class="grid-row">
+<div class="grid-row ">
     <div class="column-quarter">
-        <form class="searchCriteria">
-            <input type="text">
-            <input type="text">
-            <input type="submit">
-        </form>
-        <button class="csvDownload">download</button>
+        <div class="form-group">
+            <form class="searchCriteria">
+                <div class="inline" style="margin-bottom: 8px;">  
+                    <label class="form-label">Filter 1</label> 
+                    <input class="form-control" type="text">
+                </div>
+                <div class="inline" style="margin-bottom: 8px;">
+                    <label class="form-label">Filter 2</label> 
+                    <input class="form-control" type="text">
+                </div>
+                <div class="inline" style="margin-bottom: 8px;">
+                    <input class="button" type="submit">
+                </div>
+            </form>
+        </div>
+        <div class="form-group">
+            <button class="csvDownload button">Download</button>
+        </div>
     </div>
     <div class="column-three-quarter">
         {{#each data}}
