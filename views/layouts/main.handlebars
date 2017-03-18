@@ -1,19 +1,32 @@
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"> 
     <title>Document</title>
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div id="banner-contents" class="grid-row">
+                <div class="column-full">
+                    <h1 class="heading-medium no-margin">Team Health Check</h1>
+                </div>
+            </div>
+        </div>       
+    </header>
+    <div class="container">
+
     {{{body}}}
+
     <script src="js/bundle.js"></script>
     
     {{#if health-check}}
-        <script>
-            const healthCheck = {{{healthCheck}}}
-        </script>
+    <script>
+        const healthCheck = {{{healthCheck}}}
+    </script>
     {{/if}}
-    
 
+    </div>
 </body>
 </html>

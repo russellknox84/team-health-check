@@ -1,26 +1,37 @@
-<h1>User Responses</h1>
-<form class="searchCriteria">
-    <input type="text">
-    <input type="text">
-    <input type="submit">
-</form>
-<button class="csvDownload">download</button>
-{{#each data}}
-    <table  style="margin-bottom: 30px;">
-        <caption><strong>Submitted - {{date}}</strong></caption>
-        <thead>
-            <tr>
-                <th>Question</th>
-                <th>Response</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each userResponse}} 
-            <tr>
-                <td>{{question}}</td>
-                <td>{{userResponse}}</td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-{{/each}}
+<div class="grid-row">
+    <div class="column-full">
+        <h2 class="heading-medium">User Responses</h2>
+        <hr>
+    </div>
+</div>
+<div class="grid-row">
+    <div class="column-quarter">
+        <form class="searchCriteria">
+            <input type="text">
+            <input type="text">
+            <input type="submit">
+        </form>
+        <button class="csvDownload">download</button>
+    </div>
+    <div class="column-three-quarter">
+        {{#each data}}
+        <table class="user-response">
+            <caption>Submitted - {{date}}</caption>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Response</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each userResponse}} 
+                <tr>
+                    <td>{{question}}</td>
+                    <td>{{userResponse}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{/each}}
+    </div>
+</div>
