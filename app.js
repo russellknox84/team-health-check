@@ -22,7 +22,7 @@ var hbs = exphbs.create({
 });
 
 app.use(express.static("./dist/public"))
-app.use("/:Project", express.static("./dist/public"))
+app.use("/:Project/:Survey", express.static("./dist/public"))
 app.engine("handlebars", hbs.engine)
 app.set("view engine", "handlebars")
 
