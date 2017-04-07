@@ -20,14 +20,14 @@ const getTeamHealthCheck = (req, res) => {
             const d = surveys[0].surveys[0].questions
 
             const a = d.map(a => {
-    
                 return Object.assign({}, 
                 
                  {"question": a.question,
                     "id": a.id,
                     "type": a.type,
                     "values": a.values,
-                     "validation": "none"
+                     "validation": "none",
+                    "isMandatory": a.isMandatory
                  }
                  )
                 })

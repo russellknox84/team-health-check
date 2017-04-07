@@ -16,19 +16,35 @@ const appendErrorMessageElement = (input, parent, errorMessage) => {
 }
 
 const validate = (input, userResponse) => {
-    if (input.type === 'Radio') {
+/*    if (input.type === 'Radio') {
         if (userResponse.value === "") return true
         return false
     }
     if (input.type === 'Text') {
         if (userResponse.value.split(" ").length !== 3) return true
         return false
+    }*/
+    console.log(`${input.question} is mandatory ? (${input.isMandatory})`);
+    if(input.type === 'Text') {
+        if(input.isMandatory === false && ((userResponse.value.split(" ").length === 3) || (userResponse.value === ""))) return false;
+        if(input.isMandatory === true && userResponse.value.split(" ").length === 3) return false;
+        return true;
     }
+    if (input.type === 'Radio') {
+        if(input.isMandatory === true) {
+            console.log(`${input.question} is mandatory and the value is (${userResponse.value})`);
+            if (userResponse.value === "") return true
+        } else {
+            console.log(`${input.question} is NOT mandatory and the value is (${userResponse.value})`);
+            return false
+        }
+    }
+
 }
 
 const validateUserInput = (input, userResponse) => {
     if (validate(input, userResponse)) return Object.assign(input)
-    return Object.assign({}, { question: input.question, userResponse: userResponse.value, id: input.id })
+    return Object.assign({}, { question: input.question, isValid: true, userResponse: userResponse.value, id: input.id })
 }
 
 const getElementByClassName = (e) => {

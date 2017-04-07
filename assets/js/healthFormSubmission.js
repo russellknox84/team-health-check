@@ -14,7 +14,7 @@ const submitHealthForm = (ev) => {
             return validateUserInput(question, userInputResponses[question.id])
         })
 
-    if (userInput.every(response => response.userResponse)) {
+    if (userInput.every(response => response.isValid)) {
         const userResponse = userInput.map(response => Object.assign(response, {userResponse: response.userResponse}))
         return axios.post("/user-data", 
             { userResponse, 
