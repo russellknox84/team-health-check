@@ -4,7 +4,7 @@ import { expect } from "chai";
 
 db.Promise = global.Promise
 
-afterEach(function (done) {
+after(function (done) {
      db.connection.collections.healthdatas.drop(() => {
      done()
  })
@@ -22,21 +22,24 @@ describe("user data is persisted to database", () =>{
             })  
             done()     
         })
-
         it("should sucessfull save data into db", (done) => {
              health_data.save()
                 .then(data => {
                     expect(data)
                     done()
-                })
-            
+                })         
         })
-
-        it("should validate user date has been sent and stored successfully", (done) => {
-
+        it("should validate date has been sent and stored successfully", (done) => {
             model.find({date})
                 .then(data => {
-                    expect(date).to.equal(date)
+                    expect(data[0].date).to.deep.equal(date)
+                    done()
+                })
+        })
+        it("should validate user resposne object is persisted successfully", (done) => {
+            model.find({date})
+                .then(data => {
+                    expect(data[0].userResponse[0]).to.deep.equal({name: "Russell"})
                     done()
                 })
         })

@@ -1,5 +1,7 @@
 import db from "mongoose";
 
+db.Promise = global.Promise
+
 const DB_HOST = process.env.DB_HOST || 'localhost/teamHealthCheck';
 const DB_USER = process.env.DB_USER || false;
 const DB_PASS = process.env.DB_PASS || false;

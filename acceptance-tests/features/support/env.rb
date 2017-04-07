@@ -5,7 +5,7 @@ require 'rspec'
 require 'show_me_the_cookies'
 require 'capybara/poltergeist'
 require 'phantomjs'
-# require 'selenium-webdriver'
+require 'selenium-webdriver'
 require 'axe/cucumber/step_definitions'
 
 require 'yaml'
@@ -20,15 +20,16 @@ if ENV['IN_BROWSER']
 
   Capybara.register_driver :selenium do |app|
     require 'selenium/webdriver'
-    profile = Selenium::WebDriver::Firefox::Profile.new
+    profile = Selenium::WebDriver::Chrome.driver_path="/path/to/chrome_driver_binary/chromedriver"
     profile['browser.helperApps.alwaysAsk.force'] = false
     profile['browser.cache.disk.enable'] = false
     profile['browser.cache.memory.enable'] = false
-    Capybara::Selenium::Driver.new(app, :browser => :firefox, :profile => profile)
+    Capybara::Selenium::Driver.new(app, :browser => :chrome, :profile => profile)
   end
 else
   Capybara.run_server = false
   Capybara.register_driver :poltergeist do |app|
+    Capybara.javascript_driver = :poltergeist
     Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
   end
   Capybara.default_driver = :poltergeist

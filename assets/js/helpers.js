@@ -2,7 +2,7 @@ import validationModel from "../../app/models/validation"
 
 const removeChild = (child, parent) => {
     if (parent.querySelector(`.errormessage_${child.id}`)) {
-        parent.querySelector(`.${child.id}`).removeChild(parent.querySelector(`.errormessage_${child.id}`))
+        parent.querySelector(`.${child.id}`).parentElement.parentElement.removeChild(parent.querySelector(`.errormessage_${child.id}`))
     }
   return child
 }
@@ -16,11 +16,11 @@ const appendErrorMessageElement = (input, parent, errorMessage) => {
 }
 
 const validate = (input, userResponse) => {
-    if (input.type === 'radio') {
+    if (input.type === 'Radio') {
         if (userResponse.value === "") return true
         return false
     }
-    if (input.type === 'textarea') {
+    if (input.type === 'Text') {
         if (userResponse.value.split(" ").length !== 3) return true
         return false
     }
@@ -28,7 +28,7 @@ const validate = (input, userResponse) => {
 
 const validateUserInput = (input, userResponse) => {
     if (validate(input, userResponse)) return Object.assign(input)
-    return Object.assign(input, { userResponse: userResponse.value })
+    return Object.assign({}, { question: input.question, userResponse: userResponse.value, id: input.id })
 }
 
 const getElementByClassName = (e) => {

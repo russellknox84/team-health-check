@@ -8,7 +8,14 @@ const saveTeamHealthCheckData = (req, res) => {
 
     })
 
-    data.save()
+    model.find({projectTitle: req.body.projectTitle})
+        .then(res => {
+            const a = res.find({type: "Radio"})
+            console.log(a)
+
+        })
+
+    //data.save()
     res.send('success')
 }
 

@@ -1,5 +1,6 @@
-health_check: 'http://localhost:8000'
-responses: 'http://localhost:8000/health-check-response'
+health_check: 'http://localhost:9999'
+sucess: 'http://localhost:9999/sucess'
+responses: 'http://localhost:9999/health-check-response'
 mocks: 'http://localhost:8080'
 
 response: 'cat dog cow'

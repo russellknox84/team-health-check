@@ -6,9 +6,9 @@ When(/input value has been checked for all radio buttons/i) do
     radio_buttons = all('#radio_buttons')
     radio_buttons.each_with_index do |row, index|
       selectorId = index + 1
-      choose "Q#{selectorId}-1"
+      choose("Q#{selectorId}-1", :visible => false)
     end
-end
+end 
 
 And(/3 words have been entered for text input/i) do
   fill_in 'Q10', :with => config['response']
