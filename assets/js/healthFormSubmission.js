@@ -6,8 +6,9 @@ const submitHealthForm = (ev) => {
 
     const userInputResponses = ev.target
     const healthCheckQuestions = healthCheck["health-check"].questions
-
-
+    
+    console.log("the health check questions", healthCheck["health-check"].projectName)
+    
     const userInput = healthCheckQuestions
         .map(question => {
             return validateUserInput(question, userInputResponses[question.id])
@@ -15,7 +16,11 @@ const submitHealthForm = (ev) => {
 
     if (userInput.every(response => response.userResponse)) {
         const userResponse = userInput.map(response => Object.assign(response, {userResponse: response.userResponse}))
-        return axios.post("/user-data", { userResponse, projectTitle: healthCheckQuestions.projectTitle }) 
+        return axios.post("/user-data", 
+            { userResponse, 
+              projectName: healthCheck["health-check"].projectName,  
+              surveyName: healthCheck["health-check"].surveyName
+            }) 
             .then(a => window.location.href = "/sucess") 
     } else userInput
         .map(response => {

@@ -1,36 +1,14 @@
 import db from "./config"
 import fs from "fs"
 
-const SurveySchema = new db.Schema({
-    _id: String,
-    questions: [{
-        type: String,
-        ref: "Question"
-    }]
-})
-
-const models = db.model("Survey", SurveySchema)
-
-const QuestionSchema = new db.Schema({
-    _id: String,
-})
-
-const modelss = db.model("Question", QuestionSchema)
-
-const ProjectSchema = new db.Schema({
-    projectName: String,
-    surveys: [{
-        type: String,
-        ref: "Survey"
-    }]
-})
-
-const model = db.model('Project', ProjectSchema)
+import projectModel from "./projectModel"
+import questionModel from "./questionModel"
+import surveyModel from "./surveyModel"
 
 const getTeamHealthCheck = (req, res) => {
     const { project, survey } = req.params   
-
-    model.find({ projectName: project })
+   
+    projectModel.find({ projectName: project })
         .populate({
             path: "surveys",
             match: { "surveyName": survey },
@@ -53,12 +31,13 @@ const getTeamHealthCheck = (req, res) => {
                  }
                  )
                 })
-                a.map(a => console.log(a.values))
+          
         if (d.length === 0) return res.send("No survey found. Please try again")
-            console.log(a, "testin")
+
             const newData = {
                   "health-check": {
-                      "projectName": "g",
+                      "projectName": project,
+                      "surveyName": survey,
                       "questions": a
                   }
               }
