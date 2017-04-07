@@ -45,7 +45,7 @@ const getTeamHealthCheck = (req, res) => {
     
                 return Object.assign({}, 
                 
-                 {"question":"a.quesiton",
+                 {"question":"a.question",
                     "id": a.id,
                     "type": a.type,
                     "values": a.values,
