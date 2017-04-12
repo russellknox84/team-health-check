@@ -16,9 +16,10 @@ const getTeamHealthCheck = (req, res) => {
         })
         .lean()
         .then( surveys => {
-           
-            const d = surveys[0].surveys[0].questions
 
+            if (surveys[0].surveys[0].published === false) return res.send("No survey found. Please try again")
+            const d = surveys[0].surveys[0].questions
+            
             const a = d.map(a => {
                 return Object.assign({}, 
                 
@@ -31,7 +32,7 @@ const getTeamHealthCheck = (req, res) => {
                  }
                  )
                 })
-          
+        
         if (d.length === 0) return res.send("No survey found. Please try again")
 
             const newData = {
