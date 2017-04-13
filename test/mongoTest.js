@@ -14,7 +14,7 @@ describe("user data is persisted to database", () =>{
         let date
         let health_data
         date = new Date()
-
+ 
         beforeEach((done) => {
             health_data = new model({
                 date: date,
