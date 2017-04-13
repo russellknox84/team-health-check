@@ -21,7 +21,7 @@ const getTeamHealthCheck = (req, res) => {
             const d = surveys[0].surveys[0].questions
             
             const a = d.map(a => {
-                a.type = toLowerCase(a.type);
+                a.type = a.type.toLowerCase();
                 return Object.assign({}, 
                 
                  {"question": a.question,
